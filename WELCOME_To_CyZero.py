@@ -1,8 +1,8 @@
 import sys
 from time import sleep
 
-ANIMATE_DURATION = 0.01
-SLOW_ANIMATE_DURATION = 0.09
+ANIMATE_DURATION = 0.0095
+SLOW_ANIMATE_DURATION = 0.095
 
 
 def txt_animate(text):
@@ -56,7 +56,7 @@ def main():
         print("Ah alright darling, we shall meet in another day!")
         exit()
     else:
-        print("Hint:Use (Yes or No)")
+        print("Hint:Use (Yes or No) with no space")
         exit()
 
     print(transition)
@@ -75,12 +75,20 @@ def main():
     print(transition)
 
     slow_txt_animate(
-        "Great\nI have already known your name!\nWhat is your nickname?\n")
-    qst_2 = input("It's okay if you don't have one! ")
-    if qst_2.lower() == "no i don't have one" or "no i don't have one":
-        print("Then Goofy i shall call you!")
-    elif qst_2.lower() == "sorry i don't have a nickname" or "sorry i don't have a nickname":
-        print("Then Cutie i shall call you!")
+        "Great\nI have already known your name!\nWhat is your nickname?\nIt's okay if you don't have one!\n")
+
+    qst_2 = input("Just leave it blank and Enter__")
+    if not qst_2:
+        slow_txt_animate("Then Goofy i shall call you!\n")
+        qst_2 ='Goofy'
+    else:
+        slow_txt_animate("I shall call you {}!Cos we're now friend!\n".format(qst_2))
+
+    slow_txt_animate("So {},it would be rude to ask about this...\nBut what is your date of birth?\nAgain if you don't want to answer\n".format(qst_2))
+
+    qst_3 = input("Just leave it blank and Enter__")
+    if not qst_3:
+        slow_txt_animate("Sorry for being informal......")
 
 
 if __name__ == "__main__":
