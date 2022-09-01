@@ -1,26 +1,15 @@
+from ast import Str
 import sys
 from time import sleep
 
 ANIMATE_DURATION = 0.0085
 SLOW_ANIMATE_DURATION = 0.075
 
+name = ""
+nickname = ""
 
-def txt_animate(text):
-    for letter in text:
-        print(letter, end="")
-        sys.stdout.flush()
-        sleep(ANIMATE_DURATION)
-
-
-def slow_txt_animate(text):
-    for letter in text:
-        print(letter, end="")
-        sys.stdout.flush()
-        sleep(SLOW_ANIMATE_DURATION)
-
-
-def main():
-    hello = '''
+texts = {
+    "welcome to server": '''
       ██╗░░██╗███████╗██╗░░░░░██╗░░░░░░█████╗░██╗    
       ██║░░██║██╔════╝██║░░░░░██║░░░░░██╔══██╗██║    
       ███████║█████╗░░██║░░░░░██║░░░░░██║░░██║██║    
@@ -41,68 +30,162 @@ def main():
       ██║░░██╗░░╚██╔╝░░██╔══╝░░██╔══╝░░██╔══██╗██║░░██║
       ╚█████╔╝░░░██║░░░███████╗███████╗██║░░██║╚█████╔╝
       ░╚════╝░░░░╚═╝░░░╚══════╝╚══════╝╚═╝░░╚═╝░╚════╝░
-    '''
+    ''',
+    "bot intro": "Greeting!\nAs a proper lad i am, i shall introduce me self.\nMy name is Cy William Bot the 3rd (royal)\n...but everyone calls me CyBot!\nI was designed by this mad lad named 'Tom'\nWhom i shall call 'the Boss'!\nDesigned to make simple questions...i was\nI seek to know you better!\nSo let's begin!\n",
+    "greet with name": f"Hello {name}! Nice meeting ya!\nGreat!!\nI have already known your name !Which is {name}...\nWhat is your nickname?\nIt's okay if you don't have one!\n",
+    "birthday": f"So {nickname}, it would be rude to ask about this...\nBut what is your date of birth?\nYet again if you don't want to answer\n",
+    "gender": f"So...{nickname}?\nWhat is your gender ?\nIf you don't like answering...\n",
+}
 
-    txt_animate(hello)
-    
+questions = {
+    1: "Do you wish to continue ? :",
+    2: "What is your name ? M'lad ? ",
+    3: "Just leave it blank and press Enter__",
+    4: "Just leave it blank and press Enter__",
+    5: "Just press Enter like the previous one__"
+}
 
-    proceed = input("Do you wish to continue ? :")
-    if proceed.lower() == 'yes':
-        print("Ello luv! We shall continue!")
-    elif proceed.lower() == 'no':
-        print("Ah alright darling, we shall meet in another day!")
-        exit()
-    else:
-        print("Hint:Use (Yes or No) with no space")
-        exit()
-    
+# could also add different way of saying the same thing (man, boy, male etc...)
 
-    slow_txt_animate("Greeting!\nAs a proper lad i am, i shall introduce me self.\nMy name is Cy William Bot the 3rd (royal)\n...but everyone calls me CyBot!\nI was designed by this mad lad named 'Tom'\nWhom i shall call 'the Boss'!\nDesigned to make simple questions...i was\nI seek to know you better!\n")
+# I could not be bothered making another for non-binary cases at the end - create another dictionary and add empty values for other questions ;-;
+
+# you can add more for options and stuff as you need (this is like the definition of spaghetti code, sorry)
+questionAnswerOption1 = {
+    1: "Ello luv! We shall continue!",
+    2: "",
+    3: "Then! GoofyBoo i shall call you!",
+    4: f"Terribly sorry...my dear {nickname},for being informal......",
+    5: f"A nice young lad you are,{nickname}!"
+}
+
+questionAnswerOption2 = {
+    1: "Ah alright darling, we shall meet in another day!",
+    2: "",
+    3: "",
+    4: "",
+    5: f"A pretty young belle you are,{nickname}!"
+}
+
+questionAnswerOption3 = {
+    1: "",
+    2: "",
+    3: "",
+    4: "",
+    5: "Okay dear if you don't wanna, it's cool!\nAs long as you are happy!"
+}
+
+questionNoAnswer = {
+    1: "Hint:Use (Yes or No) with no space",
+    2: "",
+    3: f"I shall call you {nickname}!Cos we're now friend!",
+    4: "Oh great!\nI will definitely come to your birthday",
+    5: f"That is not a gender innit ?\nYou must be mistaking..."
+}
+
+userAnswerOption1 = {
+    1: "yes",
+    2: "",
+    3: "",
+    4: "",
+    5: "boy"
+}
+
+userAnswerOption2 = {
+    1: "no",
+    2: "",
+    3: "",
+    4: "",
+    5: "girl"
+}
+
+userAnswerOption3 = {
+    1: "",
+    2: "",
+    3: "",
+    4: "",
+    5: ""
+}
 
 
-    slow_txt_animate("So let's begin!\n")
-    
+def question(number: int, name: str, nickname: str):
+    # make sure it has been answered
+    answered = False
+    while not answered:
+        # if not answered, loop
+        answer = input(questions[number])
 
-    qst_1 = input("What is your name ? M'lad ? ")
-    slow_txt_animate("Hello {}! Nice meeting ya!".format(qst_1))
+        # extract information in the special cases
+        if number == 2:
+            name = answer
+            answered = True
+            break
+        elif number == 3:
+            if not answer:
+                nickname = "GoofyBoo"
+            else:
+                nickname = answer
+                answered = True
+
+        if answer.lower() == userAnswerOption1[number]:
+            print(questionAnswerOption1[number])
+            answered = True
+        elif answer.lower() == userAnswerOption2[number]:
+            print(questionAnswerOption2[number])
+            answered = True
+        elif answer.lower() == userAnswerOption3[number]:
+            print(questionAnswerOption3[number])
+        else:
+            print(questionNoAnswer[number])
+
+    returnList = [name, nickname]
+    return returnList
 
 
-    slow_txt_animate(
-        "Great!!\nI have already known your name !Which is {}...\nWhat is your nickname?\nIt's okay if you don't have one!\n".format(qst_1))
+def txt_animate(text):
+    for letter in text:
+        print(letter, end="")
+        sys.stdout.flush()
+        sleep(ANIMATE_DURATION)
 
 
-    qst_2 = input("Just leave it blank and press Enter__")
-    if not qst_2:
-        slow_txt_animate("Then! GoofyBoo i shall call you!\n")
-        qst_2 ='GoofyBoo'
-    else:
-        slow_txt_animate("I shall call you {}!Cos we're now friend!\n".format(qst_2))
-
-    slow_txt_animate("So {}, it would be rude to ask about this...\nBut what is your date of birth?\nYet again if you don't want to answer\n".format(qst_2))
+def slow_txt_animate(text):
+    for letter in text:
+        print(letter, end="")
+        sys.stdout.flush()
+        sleep(SLOW_ANIMATE_DURATION)
 
 
-    qst_3 = input("Just leave it blank and press Enter__")
-    if not qst_3:
-        slow_txt_animate("Terribly sorry...my dear {},for being informal......\n".format(qst_2))
-    else:
-        slow_txt_animate("Oh great!\nI will definitely come to your birthday\n")
-    
-    slow_txt_animate("So...{}?\nWhat is your gender ?\nIf you don't like answering...\n".format(qst_2))
+def main():
+    txt_animate(texts["welcome to server"])
 
+    # continue
+    question(1, name, nickname)
 
-    qst_4 = input("Just press Enter like the previous one__")
-    if qst_4.lower() == 'boy':
-        slow_txt_animate("A nice young lad you are,{}!".format(qst_2))
-    elif qst_4.lower() == 'girl':
-        slow_txt_animate("A pretty young belle you are,{}!".format(qst_2))
-    elif qst_4 == '':
-        slow_txt_animate("Okay dear if you don't wanna, it's cool!\nAs long as you are happy!")
-    elif qst_4 == 'nonbinary':
-        slow_txt_animate("A beautiful person you are,{}!".format(qst_2))
-    else:
-        slow_txt_animate("That is not a gender innit ?\nYou must be mistaking...\n")
-        print('__please try again with the input( boy / girl / nonbinary )__')
-    
+    slow_txt_animate(texts["bot intro"])
+
+    # name
+    tempVar = question(2, name, nickname)
+
+    # update name
+    name = tempVar[0]
+
+    slow_txt_animate(texts["greet with name"])
+
+    # nickname
+    tempVar = question(3, name, nickname)
+
+    # update nickname
+    nickname = tempVar[1]
+
+    slow_txt_animate(texts["birthday"])
+
+    # date of birth
+    question(4, name, nickname)
+
+    slow_txt_animate(texts["gender"])
+
+    # gender
+    question(5, name, nickname)
 
 
 if __name__ == "__main__":
