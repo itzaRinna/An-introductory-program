@@ -57,14 +57,14 @@ def main():
         exit()
     
 
-    slow_txt_animate("Greeting!\nAs a proper lad i am, i shall introduce me self.\nMy name is Cy William Bot the 3rd (royal)\n...but everyone calls me CyBot!\nI was designed by this mad lad named 'Tom'\nWhom i shall call 'the Boss'!\nDesigned to make simple questions...i was\nI seek to know you better!\n")
+    slow_txt_animate("Greeting!\nAs a proper lad i am, i shall introduce me self.\nMy name is Cy William Bot the 3rd (royal)\n...but everyone calls me CyBot!\nI was developed by this mad lad named 'Tom'\nWhom i shall call 'the Boss'!\nDesigned to make simple questions...i was\nI seek to know you better!\n")
 
 
     slow_txt_animate("So let's begin!\n")
     
 
     qst_1 = input("What is your name ? M'lad ? ")
-    slow_txt_animate("Hello {}! Nice meeting ya!".format(qst_1))
+    slow_txt_animate("Hello {}! Nice meeting ya!\n".format(qst_1))
 
 
     slow_txt_animate(
@@ -92,18 +92,32 @@ def main():
 
     qst_4 = input("Just press Enter like the previous one__")
     if qst_4.lower() == 'boy':
-        slow_txt_animate("A nice young lad you are,{}!".format(qst_2))
+        slow_txt_animate("A nice young lad you are,{}\n!".format(qst_2))
     elif qst_4.lower() == 'girl':
-        slow_txt_animate("A pretty young belle you are,{}!".format(qst_2))
+        slow_txt_animate("A pretty young belle you are,{}\n!".format(qst_2))
     elif qst_4 == '':
         slow_txt_animate("Okay dear if you don't wanna, it's cool!\nAs long as you are happy!")
     elif qst_4 == 'nonbinary':
-        slow_txt_animate("A beautiful person you are,{}!".format(qst_2))
+        slow_txt_animate("A beautiful person you are,{}\n!".format(qst_2))
+    elif qst_4 == 'transgender':
+        slow_txt_animate("A strong beautiful person you are,{}\n".format(qst_2))
     else:
         slow_txt_animate("That is not a gender innit ?\nYou must be mistaking...\n")
         print('__please try again with the input( boy / girl / nonbinary )__')
     
-
-
+    
+    qst_5 = input("What is your sexuality?")
+    if qst_5.lower() == "helicopter":
+        slow_txt_animate("A meme lord you are !")
+    elif qst_5.lower() == "heterosexual":
+        slow_txt_animate("Okay! Good to hear")
+    elif qst_5.lower() == "homosexual":
+        slow_txt_animate("Okay! Good to hear")
+    elif qst_5.lower() == "bisexual":
+        slow_txt_animate("Okay! Good to hear")
+    else:
+        slow_txt_animate("I'm not familiar with that term, but i wish you happy!")
+    
+    
 if __name__ == "__main__":
     main()
