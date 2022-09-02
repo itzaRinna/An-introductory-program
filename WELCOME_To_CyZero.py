@@ -156,6 +156,9 @@ def slow_txt_animate(text):
 
 
 def main():
+    global name
+    global nickname
+
     txt_animate(texts["welcome to server"])
 
     # continue
