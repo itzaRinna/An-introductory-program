@@ -58,6 +58,7 @@ questionAnswerOption1 = {
     5: f"A nice young lad you are,{nickname}!"
 }
 
+# FIXME: The {nickname} things does not work properly with dictionaries
 questionAnswerOption2 = {
     1: "Ah alright darling, we shall meet in another day!",
     2: "",
