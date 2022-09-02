@@ -192,3 +192,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+#Hey good boy, i would love to hear more about your changes to my previous program, since i cannot work this code out lmao!
