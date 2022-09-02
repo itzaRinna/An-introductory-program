@@ -127,15 +127,15 @@ def question(number: int, name: str, nickname: str):
                 answered = True
 
         if answer.lower() == userAnswerOption1[number]:
-            print(questionAnswerOption1[number])
+            slow_txt_animate(questionAnswerOption1[number])
             answered = True
         elif answer.lower() == userAnswerOption2[number]:
-            print(questionAnswerOption2[number])
+            slow_txt_animate(questionAnswerOption2[number])
             answered = True
         elif answer.lower() == userAnswerOption3[number]:
-            print(questionAnswerOption3[number])
+            slow_txt_animate(questionAnswerOption3[number])
         else:
-            print(questionNoAnswer[number])
+            slow_txt_animate(questionNoAnswer[number])
 
     returnList = [name, nickname]
     return returnList
