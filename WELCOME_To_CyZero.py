@@ -45,11 +45,9 @@ questions = {
     5: "Just press Enter like the previous one__"
 }
 
-# could also add different way of saying the same thing (man, boy, male etc...)
+# TODO: could also add different way of saying the same thing (man, boy, male etc...)
 
-# I could not be bothered making another for non-binary cases at the end - create another dictionary and add empty values for other questions ;-;
-
-# you can add more for options and stuff as you need (this is like the definition of spaghetti code, sorry)
+# TODO: create another dictionary and add empty values for other questions, and then add things for new answer options
 questionAnswerOption1 = {
     1: "Ello luv! We shall continue!",
     2: "",
@@ -76,7 +74,7 @@ questionAnswerOption3 = {
 }
 
 questionNoAnswer = {
-    1: "Hint:Use (Yes or No) with no space",
+    1: "Hint:Use (Yes or No) with no space ",
     2: "",
     3: f"I shall call you {nickname}!Cos we're now friend!",
     4: "Oh great!\nI will definitely come to your birthday",
@@ -128,15 +126,15 @@ def question(number: int, name: str, nickname: str):
                 answered = True
 
         if answer.lower() == userAnswerOption1[number]:
-            slow_txt_animate(questionAnswerOption1[number])
+            slow_txt_animate(questionAnswerOption1[number] + "\n")
             answered = True
         elif answer.lower() == userAnswerOption2[number]:
-            slow_txt_animate(questionAnswerOption2[number])
+            slow_txt_animate(questionAnswerOption2[number] + "\n")
             answered = True
         elif answer.lower() == userAnswerOption3[number]:
-            slow_txt_animate(questionAnswerOption3[number])
+            slow_txt_animate(questionAnswerOption3[number] + "\n")
         else:
-            slow_txt_animate(questionNoAnswer[number])
+            slow_txt_animate(questionNoAnswer[number] + "\n")
 
     returnList = [name, nickname]
     return returnList
