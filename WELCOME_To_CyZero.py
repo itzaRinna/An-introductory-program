@@ -1,7 +1,7 @@
 from ast import Str
 import sys
 from time import sleep
-from unicodedata import name
+from unicodedata import unicodedataname
 
 ANIMATE_DURATION = 0.0085
 SLOW_ANIMATE_DURATION = 0.075
