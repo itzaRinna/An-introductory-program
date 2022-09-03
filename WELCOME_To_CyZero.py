@@ -107,17 +107,23 @@ userAnswerOption3 = {
 
 
 def question(number: int, name: str, nickname: str):
-    # make sure it has been answered
+    # get arguments number, name, and nickname
+    # the number is the question number that will be useful in using dictionaries to get the text
+
+    # the name and nickname is the name and nickname of the user
+
+    # keep running until it has been answered
     answered = False
     while not answered:
-        # if not answered, loop
+        # aske the question and return answer to variable "answer"
+        # (get the text for the question by using the number from before and the dictionary defined at line 40)
         answer = input(questions[number])
 
-        # extract information in the special cases
+        # extract information in the special cases where the input is stored (like with names and nicknames )
         if number == 2:
+            # store answer
             name = answer
             answered = True
-            break
         elif number == 3:
             if not answer:
                 nickname = "GoofyBoo"
@@ -125,6 +131,7 @@ def question(number: int, name: str, nickname: str):
                 nickname = answer
                 answered = True
 
+        # when answer is something, print the bot answer to go with it (use dictionary)
         if answer.lower() == userAnswerOption1[number]:
             slow_txt_animate(questionAnswerOption1[number] + "\n")
             answered = True
@@ -136,6 +143,7 @@ def question(number: int, name: str, nickname: str):
         else:
             slow_txt_animate(questionNoAnswer[number] + "\n")
 
+    # store the information about the gathered as a list and return it
     returnList = [name, nickname]
     return returnList
 
@@ -154,22 +162,34 @@ def slow_txt_animate(text):
         sleep(SLOW_ANIMATE_DURATION)
 
 
+# below is main function
 def main():
+    # These are just variables that we need that was defined at line 8 & 9
     global name
     global nickname
 
+    # use function txt_animate() with arguments texts["welcome to server"]
+    # texts["welcome to server"] is an entry in the dictionary defined at line 11 (dictionaries can be used this way to reference long strings of text someplace else so that it does not clog up the main function)
     txt_animate(texts["welcome to server"])
+    # (you already have know what the txt_animate function is)
 
+    # the question of whether to continue or not
     # continue
     question(1, name, nickname)
+    # nothing important is returned so no reason to put "*some variable* = question(...)"
+    # the question function is defined at line 109
 
     slow_txt_animate(texts["bot intro"])
 
     # name
+    # name is returned so store it in some variable
     tempVar = question(2, name, nickname)
 
     # update name
+    # get the entry in the list that is the name and set it as the value for "name"
     name = tempVar[0]
+
+    # etc, you get the point
 
     slow_txt_animate(texts["greet with name"])
 
@@ -192,4 +212,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-#Hey good boy, i would love to hear more about your changes to my previous program, since i cannot work this code out lmao!
+# Hey good boy, i would love to hear more about your changes to my previous program, since i cannot work this code out lmao!
