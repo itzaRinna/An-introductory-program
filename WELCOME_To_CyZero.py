@@ -1,9 +1,13 @@
 from ast import Str
 import sys
 from time import sleep
+from unicodedata import name
 
 ANIMATE_DURATION = 0.0085
 SLOW_ANIMATE_DURATION = 0.075
+
+name = ''
+nickname = ''
 
 texts = {
     "welcome to server": '''
@@ -130,15 +134,18 @@ def question(number: int, name: str, nickname: str):
 
         # when answer is something, print the bot answer to go with it (use dictionary)
         if answer.lower() == userAnswerOption1[number]:
-            slow_txt_animate(questionAnswerOption1[number] + "\n")
+            slow_txt_animate(
+                questionAnswerOption1[number] + "\n", name, nickname)
             answered = True
         elif answer.lower() == userAnswerOption2[number]:
-            slow_txt_animate(questionAnswerOption2[number] + "\n")
+            slow_txt_animate(
+                questionAnswerOption2[number] + "\n", name, nickname)
             answered = True
         elif answer.lower() == userAnswerOption3[number]:
-            slow_txt_animate(questionAnswerOption3[number] + "\n")
+            slow_txt_animate(
+                questionAnswerOption3[number] + "\n", name, nickname)
         else:
-            slow_txt_animate(questionNoAnswer[number] + "\n")
+            slow_txt_animate(questionNoAnswer[number] + "\n", name, nickname)
 
     # store the information about the gathered as a list and return it
     returnList = [name, nickname]
@@ -159,7 +166,18 @@ def slow_txt_animate(text, name: str, nickname: str):
         sleep(SLOW_ANIMATE_DURATION)
 
 
+def update_name(tempVar: str):
+    global name
+    name = tempVar
+
+
+def update_nickName(tempVar: str):
+    global nickname
+    nickname = tempVar
+
 # below is main function
+
+
 def main():
     # These are just variables that we need that was defined at line 8 & 9
     name = ''
@@ -186,6 +204,8 @@ def main():
     # get the entry in the list that is the name and set it as the value for "name"
     name = tempVar[0]
 
+    update_name(name)
+
     # etc, you get the point
 
     slow_txt_animate(texts["greet with name"], name, nickname)
@@ -195,6 +215,8 @@ def main():
 
     # update nickname
     nickname = tempVar[1]
+
+    update_nickName(nickname)
 
     slow_txt_animate(texts["birthday"], name, nickname)
 
