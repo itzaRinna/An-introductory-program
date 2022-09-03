@@ -115,7 +115,7 @@ def question(number: int, name: str, nickname: str):
     # keep running until it has been answered
     answered = False
     while not answered:
-        # aske the question and return answer to variable "answer"
+        # ask the question and return answer to variable "answer"
         # (get the text for the question by using the number from before and the dictionary defined at line 40)
         answer = input(questions[number])
 
@@ -213,3 +213,4 @@ def main():
 if __name__ == "__main__":
     main()
 # Hey good boy, i would love to hear more about your changes to my previous program, since i cannot work this code out lmao!
+# Hello mommy, do the comments help?
