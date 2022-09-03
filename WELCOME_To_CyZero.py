@@ -5,9 +5,6 @@ from time import sleep
 ANIMATE_DURATION = 0.0085
 SLOW_ANIMATE_DURATION = 0.075
 
-name = ""
-nickname = ""
-
 texts = {
     "welcome to server": '''
       ██╗░░██╗███████╗██╗░░░░░██╗░░░░░░█████╗░██╗    
@@ -148,14 +145,14 @@ def question(number: int, name: str, nickname: str):
     return returnList
 
 
-def txt_animate(text):
+def txt_animate(text, name: str, nickname: str):
     for letter in text:
         print(letter, end="")
         sys.stdout.flush()
         sleep(ANIMATE_DURATION)
 
 
-def slow_txt_animate(text):
+def slow_txt_animate(text, name: str, nickname: str):
     for letter in text:
         print(letter, end="")
         sys.stdout.flush()
@@ -165,12 +162,12 @@ def slow_txt_animate(text):
 # below is main function
 def main():
     # These are just variables that we need that was defined at line 8 & 9
-    global name
-    global nickname
+    name = ''
+    nickname = ''
 
     # use function txt_animate() with arguments texts["welcome to server"]
     # texts["welcome to server"] is an entry in the dictionary defined at line 11 (dictionaries can be used this way to reference long strings of text someplace else so that it does not clog up the main function)
-    txt_animate(texts["welcome to server"])
+    txt_animate(texts["welcome to server"], name, nickname)
     # (you already have know what the txt_animate function is)
 
     # the question of whether to continue or not
@@ -179,7 +176,7 @@ def main():
     # nothing important is returned so no reason to put "*some variable* = question(...)"
     # the question function is defined at line 109
 
-    slow_txt_animate(texts["bot intro"])
+    slow_txt_animate(texts["bot intro"], name, nickname)
 
     # name
     # name is returned so store it in some variable
@@ -191,7 +188,7 @@ def main():
 
     # etc, you get the point
 
-    slow_txt_animate(texts["greet with name"])
+    slow_txt_animate(texts["greet with name"], name, nickname)
 
     # nickname
     tempVar = question(3, name, nickname)
@@ -199,12 +196,12 @@ def main():
     # update nickname
     nickname = tempVar[1]
 
-    slow_txt_animate(texts["birthday"])
+    slow_txt_animate(texts["birthday"], name, nickname)
 
     # date of birth
     question(4, name, nickname)
 
-    slow_txt_animate(texts["gender"])
+    slow_txt_animate(texts["gender"], name, nickname)
 
     # gender
     question(5, name, nickname)
