@@ -234,3 +234,5 @@ if __name__ == "__main__":
 # Hey good boy, i would love to hear more about your changes to my previous program, since i cannot work this code out lmao!
 # Hello mommy, do the comments help?
 # Despise reading through your comments and updates to the program, i have yet to understand it fully
+# The bot comments and questions, depise being sorted out , they are still mixed
+# Could not run the program, Error: cannot import unicodedataname (unknown)
