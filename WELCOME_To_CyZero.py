@@ -1,7 +1,7 @@
 from ast import Str
 import sys
 from time import sleep
-from unicodedata import unicodedataname
+from unicodedata import name as unicodedataname
 
 ANIMATE_DURATION = 0.0085
 SLOW_ANIMATE_DURATION = 0.075
@@ -235,4 +235,3 @@ if __name__ == "__main__":
 # Hello mommy, do the comments help?
 # Despise reading through your comments and updates to the program, i have yet to understand it fully
 # The bot comments and questions, depise being sorted out , they are still mixed
-# Could not run the program, Error: cannot import unicodedataname (unknown)
