@@ -231,5 +231,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# There is a "issues" tab in the git hub page to point out things wrong, mommy UwU
